@@ -11,10 +11,10 @@ $(document).ready(function(){
 		$('#prueba').append('<p>' + data.text + '</p>');
 	});
 
-	/*for(i=0; i<15; i++) {
+	for(i=0; i<15; i++) {
 		for(j=0; j<11; j++) {
-
+			$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaLibre'></div>")
 		}
-	}*/
+	}
 
 })
