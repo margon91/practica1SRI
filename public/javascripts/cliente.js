@@ -17,4 +17,17 @@ $(document).ready(function(){
 		}
 	}
 
+	$(".butaca").click(function() {
+		if($(this).hasClass("butacaLibre")) {
+			$(this).removeClass("butacaLibre");
+			$(this).addClass("butacaSeleccionada");
+		} else if($(this).hasClass("butacaSeleccionada")) {
+			$(this).removeClass("butacaSeleccionada");
+			$(this).addClass("butacaLibre");
+		} else if($(this).hasClass("butacaOcupada")) {
+			alert("Este es mi sitio. Buscate tu propio sitio");
+		} else
+			console.log("Ha habido un error");
+	})
+
 })
