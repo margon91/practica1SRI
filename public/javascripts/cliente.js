@@ -8,7 +8,13 @@ $(document).ready(function(){
 	});
 
 	socket.on('msg',function(data){
-		$('#sala').append('<p>' + data.text + '</p>');
+		$('#prueba').append('<p>' + data.text + '</p>');
 	});
+
+	/*for(i=0; i<15; i++) {
+		for(j=0; j<11; j++) {
+
+		}
+	}*/
 
 })

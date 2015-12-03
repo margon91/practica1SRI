@@ -1,8 +1,35 @@
 body {
-  padding: 50px;
+  padding: 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#sala {
+	width: 415px;
+	height: 590px;
+	border: 1px solid #000;
+	margin: auto;
+	padding: 7px;
+	background-color: #110e46;
+}
+
+.butaca {
+	width: 30px;
+	height: 30px;
+	margin-left: 5px;
+	margin-top: 5px;
+	border: 1px solid #000;
+	background-color: #ffffff;
+	float: left;
+}
+
+.butacaLibre {
+	background-color: #1dcb1a;
+}
+
+.butacaLibre {
+	background-color: #f36608;
+}
+
+.butacaLibre {
+	background-color: #de0000;
 }
