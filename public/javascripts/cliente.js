@@ -10,6 +10,10 @@ $(document).ready(function(){
 
 	socket.on('butacasOcupadas', function(butacas) {
 		$("#prueba").append("<p>"+butacas+"</p>");
+		for(i=0; i<butacas.length; i++) {
+			$("#"+butacas[i]).removeClass("butacaLibre");
+			$("#"+butacas[i]).addClass("butacaOcupada");
+		}
 	});
 	/*socket.on('ocupadas',function(butacas) {
 		for(i=0; i<butacas.length; i++) {
