@@ -1,30 +1,36 @@
 $(document).ready(function(){
 
-	//var bOcupadas = [];
-
 	var socket = io.connect('192.168.1.189:3000');//Establezco un socket con el servidor en este caso como es la misma máquina localhost
    	
-	socket.on('connect',function(){
-		var saludo="hola, te estoy saludando desde socket.io";
-		socket.emit('saludo',saludo); // A modo de ejemplo emito un saludo
+	var bOcupadas = [];
+
+	socket.on('connect',function() {
+		console.log('Conectado con socket');
 	});
 
-	socket.on('ocupadas',function(butacas){
-		$('#prueba').append('<p>' + butacas + '</p>');
-		dibujaSala(butacas);
+	socket.on('butacasOcupadas', function(butacas) {
+		$("#prueba").append("<p>"+butacas+"</p>");
 	});
+	/*socket.on('ocupadas',function(butacas) {
+		for(i=0; i<butacas.length; i++) {
+			butaca = butacas[i];
+			$("#prueba").append("<p>"+butaca+"</p>");
+			bOcupadas.push(butaca);
+		}
+	});*/
+
 	
-	function dibujaSala(bOcupadas) {
-		for(i=0; i<15; i++) {
-			for(j=0; j<11; j++) {
-				if(bOcupadas.length>0) {
-					posActual = i+"-"+j;
-					if(jQuery.inArray(posActual, bOcupadas)>-1)
-						$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaOcupada'></div>");
-					else
-						$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaLibre'></div>");
-				} else
+
+	for(i=0; i<15; i++) {
+		for(j=0; j<11; j++) {
+			if(bOcupadas.length>0) {
+				posActual = i+"-"+j;
+				if(jQuery.inArray(posActual, bOcupadas)>-1)
+					$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaOcupada'></div>");
+				else
 					$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaLibre'></div>");
+			} else {
+				$("#sala").append("<div id="+i+"-"+j+" class='butaca butacaLibre'></div>");
 			}
 		}
 	}
@@ -48,8 +54,15 @@ $(document).ready(function(){
 				if($("#"+i+"-"+j).hasClass("butacaSeleccionada")) {
 					$("#"+i+"-"+j).removeClass("butacaSeleccionada");
 					$("#"+i+"-"+j).addClass("butacaOcupada");
+					butacaComprada = i+"-"+j;
+					mandaButaca(butacaComprada);
 				}
 			}
 		}
 	});
+
+	var mandaButaca = function(butaca) {
+		socket.emit('butaca', butaca);
+	};
+
 });
