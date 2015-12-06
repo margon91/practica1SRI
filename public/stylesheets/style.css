@@ -12,6 +12,17 @@ body {
 	background-color: #110e46;
 }
 
+#comprar {
+	text-decoration: none;
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 10px;
+	color: #000;
+	background-color: #110e46;
+	font-size: 20px;
+	color: #fff;
+}
+
 .butaca {
 	width: 30px;
 	height: 30px;

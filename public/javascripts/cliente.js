@@ -9,21 +9,11 @@ $(document).ready(function(){
 	});
 
 	socket.on('butacasOcupadas', function(butacas) {
-		$("#prueba").append("<p>"+butacas+"</p>");
 		for(i=0; i<butacas.length; i++) {
 			$("#"+butacas[i]).removeClass("butacaLibre");
 			$("#"+butacas[i]).addClass("butacaOcupada");
 		}
-	});
-	/*socket.on('ocupadas',function(butacas) {
-		for(i=0; i<butacas.length; i++) {
-			butaca = butacas[i];
-			$("#prueba").append("<p>"+butaca+"</p>");
-			bOcupadas.push(butaca);
-		}
-	});*/
-
-	
+	});	
 
 	for(i=0; i<15; i++) {
 		for(j=0; j<11; j++) {
