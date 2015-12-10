@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var socket = io.connect('192.168.1.189:3000');//Establezco un socket con el servidor en este caso como es la misma máquina localhost
+	var socket = io.connect('10.10.2.189:3000');//Establezco un socket con el servidor en este caso como es la misma máquina localhost
    	
 	var bOcupadas = [];
 
@@ -13,7 +13,17 @@ $(document).ready(function(){
 			$("#"+butacas[i]).removeClass("butacaLibre");
 			$("#"+butacas[i]).addClass("butacaOcupada");
 		}
-	});	
+	});
+
+	socket.on('butacaCliente', function(butaca) {
+		$("#"+butaca).removeClass("butacaLibre");
+		$("#"+butaca).removeClass("butacaOcupada");
+		$("#"+butaca).addClass("butacaComprada");
+	});
+
+	socket.on('butacaComprada', function(msg) {
+		alert(msg);
+	});
 
 	for(i=0; i<15; i++) {
 		for(j=0; j<11; j++) {
@@ -58,5 +68,4 @@ $(document).ready(function(){
 	var mandaButaca = function(butaca) {
 		socket.emit('butaca', butaca);
 	};
-
 });
